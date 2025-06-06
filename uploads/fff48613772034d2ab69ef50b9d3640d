@@ -1,0 +1,119 @@
+Dataset 1:
+       task1  task2  task3  task4
+core1    778    461    921    990
+core2    501    360    959    301
+core3    748    806    565    637
+core4    651    691    385    308
+core5    562    909    986    931
+
+Dataset 2:
+       task1  task2  task3  task4
+core1    975    430    930    368
+core2   1020    654    962    350
+core3    373    314    756    685
+core4    866    946    841    374
+core5    852    846    842    665
+
+Dataset 3:
+       task1  task2  task3  task4
+core1   1099    797    527    608
+core2    706   1047    961   1042
+core3    880   1083    650    752
+core4    690    996    354    755
+core5    753    368    346    319
+
+Dataset 4:
+       task1  task2  task3  task4
+core1    560    717    514    561
+core2    675    740    385   1007
+core3    964    826    307    547
+core4   1074    767    385    646
+core5    604    993    732    516
+
+Dataset 5:
+       task1  task2  task3  task4
+core1    598    444    622    783
+core2    608    542    531    335
+core3    627    433    897   1064
+core4   1100   1024    821    841
+core5    700    307    612   1048
+
+Dataset 6:
+       task1  task2  task3  task4
+core1    72    648    459    668
+core2    580    358    752    450
+core3    343    934    407    983
+core4   1015    882   1002   1049
+core5    967   3034    402    968
+
+Dataset 7:
+       task1  task2  task3  task4
+core1    366    726   1028    349
+core2    583    604    953    851
+core3   1057    683    596    821
+core4    690   4091    591    899
+core5    414   3016    628    623
+
+Dataset 8:
+       task1  task2  task3  task4
+core1    934    921    598    375
+core2   1032    642    657    308
+core3   1000    886    478    560
+core4    472    647    490    380
+core5    570    433   1059    700
+
+Dataset 9:
+       task1  task2  task3  task4
+core1    776    513    652    506
+core2    713    772    785    818
+core3    758    507    365   1090
+core4    393    376    926    567
+core5    966    809    593    566
+
+Dataset 10:
+       task1  task2  task3  task4
+core1   1044   1001    746    854
+core2    888    432    699   1096
+core3    926    677    348    681
+core4    750    829    767    590
+core5    483   1053    776    565
+
+Dataset 11:
+       task1  task2  task3  task4
+core1    357    754    603    346
+core2    995    889    708    879
+core3    340    581    476    324
+core4    539    807    377    595
+core5    880   1001    852    738
+
+Dataset 12:
+       task1  task2  task3  task4
+core1    604    719    578    961
+core2    308    792    423    549
+core3    408    943    609    338
+core4   1009    313    460    493
+core5    923    376    563   1088
+
+Dataset 13:
+       task1  task2  task3  task4
+core1    307   1046   1028    609
+core2    903    357    720    822
+core3   1088    967    527    517
+core4    615    317    403    972
+core5    746    651    362    756
+
+Dataset 14:
+       task1  task2  task3  task4
+core1    982    525    494   1019
+core2    526    849    439    835
+core3   1049    556    906   1087
+core4    990    447    494    810
+core5    753    902    863    300
+
+Dataset 15:
+       task1  task2  task3  task4
+core1    324    763    618    576
+core2    785    954    357    492
+core3    462    766    946    676
+core4    892    312    782    641
+core5    460    454    371    360
