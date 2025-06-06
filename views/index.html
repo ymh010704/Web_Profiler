@@ -26,7 +26,7 @@
         <button id="loadDbDataBtn1">DataBase load (5x5)</button>
       </li>
       <li>
-        <button id="loadDbDataBtn2">DataBase load (4x4)</button>
+        <button id="loadDbDataBtn2">DataBase load (4x5)</button>
       </li>
       <li>
         <button id="loadDbDataBtn3">DataBase load (3x3)</button>
@@ -50,15 +50,14 @@
       <canvas id="coreChart" style="max-width: 600px; max-height: 480px; margin:40px 0 0 630px;"></canvas>
     </div>
 
-    
   </section>
 
 
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
-  let coreChartInstance = null;
+    let coreChartInstance = null;
 
   function renderCoreChart(dataArray) {
     // core별 avg 값 모으기
@@ -196,7 +195,7 @@
     dataArray.forEach(stats => {
       const section = document.createElement('div');
       section.innerHTML = `
-        <h3>${stats.core}</h3>
+        <h3>Core ${stats.core}</h3>
         <ul>
           <li><strong>MIN:</strong> ${stats.min}</li>
           <li><strong>MAX:</strong> ${stats.max}</li>
@@ -260,9 +259,9 @@
       await loadDbData('f36e5a18e2cbda7512721e076eb3621e');
     });
 
-  // db 버튼 2 (4x4)
+  // db 버튼 2 (4x5)
     document.getElementById('loadDbDataBtn2').addEventListener('click', async () => {
-      await loadDbData('41f0a2d85f29ea9a4e68ee94e25256e8');
+      await loadDbData('6d962b73d1fa75caebc42bc3cb764e96');
     });
 
     // db 버튼 3 (3x3)

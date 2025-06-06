@@ -1,0 +1,119 @@
+Dataset 1:
+       task1  task2  task3  task4
+core1   5010   2750   1258   6890
+core2   4471   5275   8518   3532
+core3   7063   1454   8907   9143
+core4   7157   6864   4852   3227
+core5   5110   4457   7646   9437
+
+Dataset 2:
+       task1  task2  task3  task4
+core1   4412   1621   8744   5903
+core2   5937   7509   3732   5255
+core3   6812   7182   3834   6304
+core4   7378   1230   3753   6526
+core5   2270   7345   8834   4108
+
+Dataset 3:
+       task1  task2  task3  task4
+core1   1812   2787   8344    478
+core2   4533   3959   9524   1823
+core3   9757   7165   8901   7601
+core4   8426   3046   3907   7847
+core5   2995   1612   3515   6625
+
+Dataset 4:
+       task1  task2  task3  task4
+core1   6075   3642   2638   1269
+core2   5544   6288   2210   7873
+core3   5612   3752   9988   9514
+core4   9212   4420   1398   6949
+core5   9892   4746   7829   7172
+
+Dataset 5:
+       task1  task2  task3  task4
+core1   5214   8113   6428   2617
+core2   8214   8936   8606   9996
+core3   3276   3867   6912   4672
+core4   7389   8860   9729   4899
+core5   4455   5810   1422   3978
+
+Dataset 6:
+       task1  task2  task3  task4
+core1   2361   4678   5058   4125
+core2   4750   8648   5632   6905
+core3   6388   4028   8278   7821
+core4   2359   3280   4587   9931
+core5   6713   5110   3187   5003
+
+Dataset 7:
+       task1  task2  task3  task4
+core1   8145   6284   7334   2525
+core2   7148    415   1228   2177
+core3   3358   2492   3856   9858
+core4   4566   2900   6584   4681
+core5   2844    637   3529   2432
+
+Dataset 8:
+       task1  task2  task3  task4
+core1   6399   4198   6292   6267
+core2   8387   9835   8788   8747
+core3   4384   2813   1929   1041
+core4   6907   1996   8040   4163
+core5   5213   6075   3303   4002
+
+Dataset 9:
+       task1  task2  task3  task4
+core1   2324   3100   8770   2822
+core2   2495   6430   1347   4619
+core3   6305   4032   7342   5628
+core4   2616   5049   6603   2829
+core5   7673   6428   4248   3497
+
+Dataset 10:
+       task1  task2  task3  task4
+core1   7413   9395   7366   6962
+core2   3521   3568   7582   4548
+core3   1671    962   8043   7450
+core4   1054   8775   1121   3660
+core5   7500   4825   4540   1787
+
+Dataset 11:
+       task1  task2  task3  task4
+core1    830   4766   9400   5686
+core2   9506   5382   7375   4436
+core3   5009   4996   7502   4181
+core4   3156    834   6371   3651
+core5   6899   5819   1046   7435
+
+Dataset 12:
+       task1  task2  task3  task4
+core1   5074   7521   2584   4890
+core2   5650   7593   6608   5182
+core3   2808   3271   7923   1177
+core4   4480   5418   2115   2872
+core5   2906   2868   7444   1053
+
+Dataset 13:
+       task1  task2  task3  task4
+core1   7714   8531   8796   7744
+core2   8554   7657    994   5340
+core3   7748    403   9127   2031
+core4   3849   7819   2287   8254
+core5   6735    302   6809    447
+
+Dataset 14:
+       task1  task2  task3  task4
+core1   4766   5811   1318   3026
+core2   6325   9132   9802   8729
+core3   4092   5597   8870    779
+core4   8638   4274   5174   2742
+core5   2484   9494   5947   5369
+
+Dataset 15:
+       task1  task2  task3  task4
+core1   5793   9911   1011   8763
+core2   8701   4579   1540   2396
+core3   8439   9919   4351   5431
+core4   8808   6218   2666   2797
+core5   7130   7220   3792   1415
