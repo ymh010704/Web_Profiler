@@ -1,0 +1,40 @@
+{
+  "name": "profiler",
+  "version": "0.0.1",
+  "description": "Node.js를 활용한 Profiler 프로그램 분석",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ymh010704/Web_Profiler.git"
+  },
+  "keywords": [
+    "..."
+  ],
+  "author": "YunMinhyuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ymh010704/Web_Profiler/issues"
+  },
+  "homepage": "https://github.com/ymh010704/Web_Profiler#readme",
+  "dependencies": {
+    "chart.js": "^4.4.9",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-fileupload": "^1.5.1",
+    "express-session": "^1.18.1",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.0",
+    "mysql2": "^3.14.1",
+    "nunjucks": "^3.2.4",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>(웹응용)Profiler 분석하기</title>
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <header>
+    <h2>웹 응용기술 - Profiler 프로그램 분석</h2>
+  </header>
+
+  <section>
+
+    <ul id="database">
+      <li>
+        <h2>.txt파일 업로드</h2>
+      </li>
+      <li>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <input type="file" name="file" accept=".txt" required />
+          <button type="submit">업로드 및 분석</button>
+        </form>
+      </li>
+      <li>
+        <button id="loadDbDataBtn1">DataBase load (5x5)</button>
+      </li>
+      <li>
+        <button id="loadDbDataBtn2">DataBase load (4x4)</button>
+      </li>
+      <li>
+        <button id="loadDbDataBtn3">DataBase load (3x3)</button>
+      </li>
+    </ul>
+    
+
+    <!-- Task 그래프 -->
+    <div id="resultContainer">
+      <h2 class="section_search">Task별 분석 결과</h2>
+    </div>
+    <h2 class="section_task">Task별 MIN / AVG / MAX 처리시간</h2>
+    <div id="chartContainer"></div>
+
+    <!-- Core 그래프 -->
+    <div id="coreResultContainer" style="margin-top: 40px;">
+      <h2 class="core_search">Core별 분석 결과</h2>
+    </div>
+    <div>
+      <h2 id="section_core">Core별 처리 시간</h2>
+      <canvas id="coreChart" style="max-width: 600px; max-height: 480px; margin:40px 0 0 630px;"></canvas>
+    </div>
+
+    
+  </section>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+  let coreChartInstance = null;
+
+  function renderCoreChart(dataArray) {
+    // core별 avg 값 모으기
+    const coreMap = {};
+    dataArray.forEach(item => {
+      const core = item.core;
+      const avg = Number(item.avg);
+      if (!coreMap[core]) coreMap[core] = [];
+      coreMap[core].push(avg);
+    });
+
+    // core별 평균 avg 계산
+    const cores = Object.keys(coreMap);
+    const avgByCore = cores.map(core => {
+      const arr = coreMap[core];
+      const sum = arr.reduce((a, b) => a + b, 0);
+      return (sum / arr.length).toFixed(2);
+    });
+
+    // 이전 차트 있으면 제거
+    if (coreChartInstance) coreChartInstance.destroy();
+
+    const ctx = document.getElementById('coreChart').getContext('2d');
+    coreChartInstance = new Chart(ctx, {
+      type: 'pie', // 혹은 'bar'
+      data: {
+        labels: cores.map(c => `Core ${c}`),
+        datasets: [{
+          label: '평균 처리시간',
+          data: avgByCore,
+          backgroundColor: [
+            '#FF6384', '#36A2EB', '#FFCE56', '#8AFFC1', '#C18AFF', '#FFA500'
+          ],
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Core별 평균 처리시간'
+          }
+        }
+      }
+    });
+  }
+
+
+
+    /* db에 값 저장하고 싶으면 활성화
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch('/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        return alert("업로드 실패: " + errorText);
+      }
+
+      const uploadData = await res.json();
+      console.log("업로드 응답:", uploadData);
+
+      // ⭐ 업로드 후에 바로 해당 fileName 으로 결과 조회
+      const resultsRes = await fetch(`/results/${uploadData.fileName}`);
+      if (!resultsRes.ok) {
+        const errorText = await resultsRes.text();
+        return alert("결과 조회 실패: " + errorText);
+      }
+
+      const resultsData = await resultsRes.json();
+      console.log("분석 결과:", resultsData);
+
+      renderResults(resultsData); // ✅ 시각화
+      renderChart(resultsData);   // ✅ 시각화
+    } catch (err) {
+      alert("에러 발생: " + err.message);
+    }
+  });
+*/
+  document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch('/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        return alert("업로드 실패: " + errorText);
+      }
+
+      const data = await res.json();
+      console.log("업로드 응답:", data);
+
+      renderResults(data.result);  // DB 저장 없이 바로 받은 분석 결과 렌더링
+      renderChart(data.result);
+        
+    } catch (err) {
+      alert("에러 발생: " + err.message);
+    }
+  });
+
+
+    function renderResults(dataArray) {
+  const container = document.getElementById('resultContainer');
+  container.innerHTML = `<h2>분석 결과</h2>`;
+
+  dataArray.forEach(stats => {
+    const section = document.createElement('div');
+    section.innerHTML = `
+      <h3>${stats.task}</h3>
+      <ul>
+        <li><strong>MIN:</strong> ${stats.min}</li>
+        <li><strong>MAX:</strong> ${stats.max}</li>
+        <li><strong>AVG:</strong> ${Number(stats.avg).toFixed(2)}</li>
+      </ul>
+    `;
+    container.appendChild(section);
+  });
+}
+  // 코어 차트 출력
+  function renderCoreResults(dataArray) {
+    const container = document.getElementById('coreResultContainer');
+    container.innerHTML = `<h2>Core별 분석 결과</h2>`;
+
+    dataArray.forEach(stats => {
+      const section = document.createElement('div');
+      section.innerHTML = `
+        <h3>${stats.core}</h3>
+        <ul>
+          <li><strong>MIN:</strong> ${stats.min}</li>
+          <li><strong>MAX:</strong> ${stats.max}</li>
+          <li><strong>AVG:</strong> ${Number(stats.avg).toFixed(2)}</li>
+        </ul>
+      `;
+      container.appendChild(section);
+    });
+  }
+
+  function renderChart(dataArray) {
+    const tasks = dataArray.map(item => item.task);
+    const minValues = dataArray.map(item => item.min);
+    const avgValues = dataArray.map(item => item.avg);
+    const maxValues = dataArray.map(item => item.max);
+
+    const canvasContainer = document.getElementById('chartContainer');
+    canvasContainer.innerHTML = '<canvas id="myChart"></canvas>';
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: tasks,
+        datasets: [
+          {
+            label: 'MIN',
+            data: minValues,
+            backgroundColor: 'rgba(255, 99, 132, 0.6)'
+          },
+          {
+            label: 'AVG',
+            data: avgValues,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)'
+          },
+          {
+            label: 'MAX',
+            data: maxValues,
+            backgroundColor: 'rgba(75, 192, 192, 0.6)'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Task별 MIN / AVG / MAX 처리 시간'
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  } 
+    // db에 저장된 값 가져오는 버튼 함수
+    document.getElementById('loadDbDataBtn1').addEventListener('click', async () => {
+      await loadDbData('f36e5a18e2cbda7512721e076eb3621e');
+    });
+
+  // db 버튼 2 (4x4)
+    document.getElementById('loadDbDataBtn2').addEventListener('click', async () => {
+      await loadDbData('41f0a2d85f29ea9a4e68ee94e25256e8');
+    });
+
+    // db 버튼 3 (3x3)
+    document.getElementById('loadDbDataBtn3').addEventListener('click', async () => {
+      await loadDbData('06e58d84934bac006fe8b796be038a84');
+    });
+
+// 공통 로드 함수
+  async function loadDbData(fileId) {
+    try {
+      const res = await fetch(`/results/${fileId}`);
+
+      if (!res.ok) {
+        const errText = await res.text();
+        alert(`분석 결과를 불러오지 못했습니다. 상태: ${res.status} 내용: ${errText}`);
+        return;
+      }
+
+      // 중복된 fetch 삭제, 바로 json 받기
+      const data = await res.json();
+
+      // 서버에서 반환하는 데이터 구조에 맞춰 검사 및 렌더링
+      // 예시로 data가 { taskData: [...], coreData: [...] } 구조라면 아래처럼
+      if (!data.taskData || !Array.isArray(data.taskData)) {
+        alert('서버에서 예상치 못한 형식의 taskData를 받았습니다.');
+        return;
+      }
+      if (!data.coreData || !Array.isArray(data.coreData)) {
+        alert('서버에서 예상치 못한 형식의 coreData를 받았습니다.');
+        return;
+      }
+      if (!Array.isArray(data.taskData)) {
+        alert('서버에서 예상치 못한 형식의 데이터를 받았습니다.');
+        return;
+      }
+
+      renderResults(data.taskData);
+      renderChart(data.taskData);
+
+      renderCoreResults(data.coreData);
+      renderCoreChart(data.coreData);
+
+    } catch (err) {
+      alert('에러 발생: ' + err.message);
+    }
+  }
+  </script>
+</body>
+</html>

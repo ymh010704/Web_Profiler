@@ -1,0 +1,14 @@
+	task1	task2	task3
+core1	125	210	320
+core2	98	395	275
+core3	115	225	310
+
+	task1	task2	task3
+core1	105	180	290
+core2	95	175	260
+core3	110	110	300
+
+	task1	task2	task3
+core1	140	215	325
+core2	120	200	310
+core3	430	220	330

@@ -1,0 +1,90 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+header {
+    width: 1920px;
+    height: 80px;
+    background-color: beige;
+    padding: 20px;
+    color: rgb(14, 1, 73);
+}
+
+section {
+    width: 1920px;
+    height: 1000px;
+    padding: 30px;
+}
+
+#database {
+    width: 1300px;
+    height: 80px;
+    border-bottom: 3px solid beige;
+    margin-bottom: 20px;
+}
+
+#database > li {
+    width: 20%;
+    height: 70px;
+    float: left;
+}
+
+#database > li > form > button {
+    width: 140px;
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 10px;
+    border:none;
+    background-color: beige;
+}
+
+#resultContainer, #coreResultContainer {
+    width: 280px;
+    float: left;
+    border-right: 2px solid beige;
+}
+
+.section_search, .section_task {
+    float: left;
+}
+
+.section_search {
+    width: 281px;
+}
+
+#section_task, #section_core {
+    margin: 0 0 30px 30px;
+    float: left;
+}
+
+#chartContainer, #coreChart {
+    width: 1000px; 
+    height: 570px; 
+    max-width: 800px; 
+    margin-top: 30px;
+}
+
+
+#resultContainer li:nth-of-type(1) { color: rgb(248, 73, 73); }
+#resultContainer li:nth-of-type(2) { color: rgb(67, 250, 67); }
+#resultContainer li:nth-of-type(3) { color: rgb(82, 82, 248); margin-bottom: 10px; }
+
+
+#coreResultContainer h3:nth-of-type(1) { color: rgb(248, 73, 73); }
+
+#myChart {
+    width: 1000px;
+    height: 500px;
+}
+
+#database > li > button {
+    width: 200px;
+    height: 60px;
+    border : none;
+    border-radius: 10px;
+    background-color: beige;
+}
